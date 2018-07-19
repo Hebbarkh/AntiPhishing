@@ -10,14 +10,14 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from skimage import exposure
 import pandas as pd
-import SVM
+import pickle
 
 
-model = SVM.svm_model()
+model = pickle.load(open('finalized_model.sav', 'rb'))
 
 
 def test(img):
-	global model
+	''' Function to predict individual digits '''
 	testImg = np.reshape(img, (1,-1))
 	z=model.predict(testImg)
 	print(z)
@@ -25,14 +25,15 @@ def test(img):
 
 
 def read_img():
-	global img
-	img=imread("test_samples/car.jpeg",as_grey=True)
-	img1=imread("test_samples/car.jpeg")
+	''' Function to read image in grey scale mode'''
+	img=imread("test_samples/car3.jpg",as_grey=True)
+	img1=imread("test_samples/car3.jpg")
 	imshow(img1)
 	plt.show()
+	return img
 
-def process_image():
-	read_img()
+def process_image(img):
+	''' A function to extract Licence plate of the vehicle by connected component analysis by converting image into binary.	'''
 	bin_img=img>=threshold_otsu(img)
 	cc = label(bin_img)
 
@@ -52,7 +53,9 @@ def process_image():
 	                	ax1.add_patch(rectBorder)
 	                	num_plate.append(bin_img[minr:maxr,minc:maxc])
 	                	dim.append([minr,minc,maxr,maxc])
-
+	return num_plate,dim
+def extract_digits(num_plate,dim):
+	''' Extract individual digits from the number plate and recognize'''
 	plt.show()
 	i=0
 	k=0
@@ -79,4 +82,6 @@ def process_image():
 		if len(nump)>3:
 			print("Recognized Number Plate:\t",''.join(nump))
 if __name__ == '__main__':
-	process_image()
+	img = read_img()
+	num_plate,dim=process_image(img)
+	extract_digits(num_plate,dim)
