@@ -21,13 +21,13 @@ Since we are focusing on the Lexical features of the URL a python helper program
 **Urlparse** - This helps in breaking down the URL into scheme (http/https etc), netloc(domain and subdomain), path( file path), params (GET parameters), query(set of arguments) and fragment. 
 **Tldextract** - This helps in accurately extracting domain, subdomain and suffix ( .com, .in etc) from the URL.
 
-![Dataset after preprocessing](https://github.com/Hebbarkh/AntiPhishing/tree/master/Plot/processed.png)
+![Dataset after preprocessing](https://github.com/Hebbarkh/AntiPhishing/blob/master/Plot/processed.png)
 
 Each attribute in the final dataset was plot to understand the significance of the attribute in classifying the URL as malicious or benign.
 
-![Domain Leght](https://github.com/Hebbarkh/AntiPhishing/tree/master/Plot/domainLength.png)
+![Domain Leght](https://github.com/Hebbarkh/AntiPhishing/blob/master/Plot/domainLength.png)
 
-![Number of Dots](https://github.com/Hebbarkh/AntiPhishing/tree/master/Plot/dots.png)
+![Number of Dots](https://github.com/Hebbarkh/AntiPhishing/blob/master/Plot/dots.png)
 
-![Length of the URL](https://github.com/Hebbarkh/AntiPhishing/tree/master/Plot/length.png)
+![Length of the URL](https://github.com/Hebbarkh/AntiPhishing/blob/master/Plot/length.png)
 
